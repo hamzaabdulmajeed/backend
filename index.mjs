@@ -25,8 +25,14 @@ app.use(express.json()); // body parser
 
 app.use(
   cors({
-    origin: "http://localhost:3000", // Replace with your frontend URL
-    credentials: true, // Allow cookies to be sent
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
   })
 );
 app.use("/users", usersRouter) // Secure api

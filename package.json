@@ -1,0 +1,23 @@
+{
+  "name": "restaurant-app-nextjs-",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.mjs",
+  "scripts": {
+    "start": "node index.mjs",
+    "dev": "npx nodemon index.mjs",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
+    "mongodb": "4.1",
+    "mongoose": "^8.8.2",
+    "nodemon": "^3.1.7",
+    "react-toastify": "^10.0.6"
+  }
+}

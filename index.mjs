@@ -23,7 +23,7 @@ app.use(express.json()); // body parser
 // app.use(cors())
 const allowedOrigins = [
   "http://localhost:3000", // Local development
-  "https://frontend-two-gamma-38.vercel.app/",// Production frontend
+  "https://frontend-omega-ten-71.vercel.app/",// Production frontend
    // Production frontend
 
 ];

@@ -21,32 +21,32 @@ import usersRouter from './routes/users.js'
 const app = express();
 app.use(express.json()); // body parser
 // app.use(cors())
-const allowedOrigins = [
-  "http://localhost:3000", // Local development
-  "https://frontend-one-liart-41.vercel.app", // Production frontend
-  "https://frontend-one-liart-41.vercel.app/signin", // Production frontend
+// const allowedOrigins = [
+//   "http://localhost:3000", // Local development
+//   "https://frontend-one-liart-41.vercel.app", // Production frontend
+//   "https://frontend-one-liart-41.vercel.app/signin", // Production frontend
 
-];
-
-// app.use(
-//   cors({
-//     origin: "https://frontend-one-liart-41.vercel.app", // Replace with your frontend URL
-//     credentials: true, // Allow sending cookies
-//   })
-// );
+// ];
 
 app.use(
   cors({
-    origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    credentials: true,
+    origin: "https://frontend-one-liart-41.vercel.app", // Replace with your frontend URL
+    credentials: true, // Allow sending cookies
   })
 );
+
+// app.use(
+//   cors({
+//     origin: (origin, callback) => {
+//       if (!origin || allowedOrigins.includes(origin)) {
+//         callback(null, true);
+//       } else {
+//         callback(new Error("Not allowed by CORS"));
+//       }
+//     },
+//     credentials: true,
+//   })
+// );
 app.use("/users", usersRouter) // Secure api
 
 

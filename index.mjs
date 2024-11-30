@@ -32,9 +32,9 @@ app.use(
 app.use("/users", usersRouter) // Secure api
 
 
-// app.get('/', (req, res) => {
-//     res.status(200).send('Hello!');
-//   });
+app.get('/', (req, res) => {
+    res.status(200).send('Hello!');
+  });
   
 
 

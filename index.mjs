@@ -25,14 +25,8 @@ app.use(express.json()); // body parser
 
 app.use(
   cors({
-    origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    credentials: true,
+    origin: "https://frontend-one-liart-41.vercel.app", // Replace with your frontend URL
+    credentials: true, // Allow sending cookies
   })
 );
 app.use("/users", usersRouter) // Secure api

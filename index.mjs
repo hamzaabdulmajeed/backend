@@ -12,6 +12,8 @@
 import express from 'express';
 import cors from 'cors';
 import path from 'path';
+
+
 const __dirname = path.resolve();
 
 // import authRouter from './routes/auth.mjs'
@@ -21,32 +23,41 @@ import usersRouter from './routes/users.js'
 const app = express();
 app.use(express.json()); // body parser
 // app.use(cors())
-const allowedOrigins = [
-  "http://localhost:3000", // Local development
-  "https://frontend-omega-ten-71.vercel.app/",// Production frontend
-   // Production frontend
+// const allowedOrigins = [
+//   "http://localhost:3000", // Local development
+//   "https://frontend-omega-ten-71.vercel.app/",// Production frontend
+//    // Production frontend
 
-];
+// ];
 
-// app.use(
-//   cors({
-//     origin: "http://localhost:3000", // Replace with your frontend URL
-//     credentials: true, // Allow sending cookies
-//   })
-// );
+
 
 app.use(
   cors({
     origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
+      if (origin) {
+        // Allow any origin making a valid request
         callback(null, true);
       } else {
-        callback(new Error("Not allowed by CORS"));
+        // Allow non-browser clients (e.g., Postman, server-to-server)
+        callback(null, true);
       }
     },
-    credentials: true,
+    credentials: true, // Allow cookies and credentials
   })
 );
+
+
+
+// app.use(
+//   cors({
+//     origin: '*', // Replace with your frontend URL
+//     credentials: true, // Allow sending cookies
+//   })
+// );
+// app.use("/static", express.static(path.join(__dirname, 'static')))
+
+
 app.use("/users", usersRouter) // Secure api
 
 
@@ -57,9 +68,8 @@ app.get('/', (req, res) => {
 
 
 //     /static/vscode_windows.exe
-// app.use("/static", express.static(path.join(__dirname, 'static')))
 
-// app.use(express.static(path.join(__dirname, './web/build')))
+app.use(express.static(path.join(__dirname, './web/build')))
 
 const PORT = process.env.PORT || 3002;
 app.listen(PORT, () => {

@@ -130,7 +130,7 @@ router.post('/getUser', async (req, res) => {
     const userId = user._id; // Extract user's unique ID
     res.setHeader(
       'Set-Cookie',
-      `userId=${userId}; Path=/; HttpOnly; SameSite=Lax;  Max-Age=86400`
+      `userId=${userId}; Path=/; HttpOnly; SameSite=None; secure; Max-Age=86400`
     );
     
 

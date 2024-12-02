@@ -127,16 +127,16 @@ router.post('/getUser', async (req, res) => {
     }
 
     // If user is authenticated, send back the user ID and set cookie
-    const userId = user._id; // Extract user's unique ID
-    res.setHeader(
-      'Set-Cookie',
-      `userId=${userId}; Path=/; HttpOnly; SameSite=None; Secure; Max-Age=86400`
-    );
+    // const userId = user._id; // Extract user's unique ID
+    // res.setHeader(
+    //   'Set-Cookie',
+    //   `userId=${userId}; Path=/; HttpOnly; SameSite=None; Secure; Max-Age=86400`
+    // );
     
 
     // Return success response with user ID
-    res.status(200).json({ userId, user});
-    console.log("User authenticated:", userId);
+    res.status(200).json({ user});
+    // console.log("User authenticated:", userId);
   } catch (error) {
     console.error("Error fetching user by email:", error);
     res.status(500).json({ message: "Server error, please try again later" });
@@ -219,7 +219,7 @@ router.post('/getUser', async (req, res) => {
 
 router.post('/logout', (req, res) => {
   try {
-    res.setHeader('Set-Cookie', 'userId=; Path=/; Max-Age=0; HttpOnly');
+    // res.setHeader('Set-Cookie', 'userId=; Path=/; Max-Age=0; HttpOnly');
     res.status(200).json({ message: "Logged out successfully" });
   } catch (error) {
      res.status(500).json({ error: "Logout failed" });

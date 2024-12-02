@@ -33,7 +33,7 @@ app.use(express.json()); // body parser
 
 app.use(
   cors({
-    origin: 'https://frontend-eight-lilac.vercel.app', // Frontend URL
+    origin: 'https://frontend-eight-lilac.vercel.app/', // Frontend URL
     credentials: true, // Allow cookies to be sent
   })
 );

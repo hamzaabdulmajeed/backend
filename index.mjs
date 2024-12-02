@@ -22,30 +22,37 @@ import usersRouter from './routes/users.js'
 // const cors = require('cors')
 const app = express();
 app.use(express.json()); // body parser
-// app.use(cors())
-// const allowedOrigins = [
-//   "http://localhost:3000", // Local development
-//   "https://frontend-omega-ten-71.vercel.app/",// Production frontend
-//    // Production frontend
+app.use(cors())
+const allowedOrigins = [
+  "http://localhost:3000", // Local development
+  "https://frontend-eight-lilac.vercel.app/",// Production frontend
+  "https://frontend-eight-lilac.vercel.app/signin"
+  // Production frontend
 
-// ];
+];
+
+// app.use(
+//   cors({
+//     origin: 'https://frontend-eight-lilac.vercel.app', // Frontend URL
+//     credentials: true, // Allow cookies to be sent
+//   })
+// );
 
 
-
-app.use(
-  cors({
-    origin: (origin, callback) => {
-      if (origin) {
-        // Allow any origin making a valid request
-        callback(null, true);
-      } else {
-        // Allow non-browser clients (e.g., Postman, server-to-server)
-        callback(null, true);
-      }
-    },
-    credentials: true, // Allow cookies and credentials
-  })
-);
+// app.use(
+//   cors({
+//     origin: (origin, callback) => {
+//       if (origin) {
+//         // Allow any origin making a valid request
+//         callback(null, true);
+//       } else {
+//         // Allow non-browser clients (e.g., Postman, server-to-server)
+//         callback(null, true);
+//       }
+//     },
+//     credentials: true, // Allow cookies and credentials
+//   })
+// );
 
 
 

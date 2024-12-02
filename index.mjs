@@ -32,29 +32,29 @@ app.use(express.json()); // body parser
 
 
 
-// app.use(
-//   cors({
-//     origin: (origin, callback) => {
-//       if (origin) {
-//         // Allow any origin making a valid request
-//         callback(null, true);
-//       } else {
-//         // Allow non-browser clients (e.g., Postman, server-to-server)
-//         callback(null, true);
-//       }
-//     },
-//     credentials: true, // Allow cookies and credentials
-//   })
-// );
-
-
-
 app.use(
   cors({
-    origin: 'https://frontend-eight-lilac.vercel.app', // Replace with your frontend URL
-    credentials: true, // Allow sending cookies
+    origin: (origin, callback) => {
+      if (origin) {
+        // Allow any origin making a valid request
+        callback(null, true);
+      } else {
+        // Allow non-browser clients (e.g., Postman, server-to-server)
+        callback(null, true);
+      }
+    },
+    credentials: true, // Allow cookies and credentials
   })
 );
+
+
+
+// app.use(
+//   cors({
+//     origin: 'https://frontend-eight-lilac.vercel.app', // Replace with your frontend URL
+//     credentials: true, // Allow sending cookies
+//   })
+// );
 // app.use("/static", express.static(path.join(__dirname, 'static')))
 
 

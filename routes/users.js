@@ -127,10 +127,10 @@ router.post('/getUser', async (req, res) => {
     }
 
     // If user is authenticated, send back the user ID and set cookie
-    // const userId = user; // Extract user's unique ID
+    const userId = user._id; // Extract user's unique ID
     res.setHeader(
       'Set-Cookie',
-      `user=${user}; Path=/; HttpOnly; SameSite=None; Secure; Max-Age=86400`
+      `userId=${userId}; Path=/; HttpOnly; SameSite=None; Secure; Max-Age=86400`
     );
     
 
@@ -219,7 +219,7 @@ router.post('/getUser', async (req, res) => {
 
 router.post('/logout', (req, res) => {
   try {
-    res.setHeader('Set-Cookie', 'user=; Path=/; Max-Age=0; HttpOnly');
+    res.setHeader('Set-Cookie', 'userId=; Path=/; Max-Age=0; HttpOnly');
     res.status(200).json({ message: "Logged out successfully" });
   } catch (error) {
      res.status(500).json({ error: "Logout failed" });
